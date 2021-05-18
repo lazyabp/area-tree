@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="$(AbpVersion)" />
+    <PackageReference Include="Lazy.Abp.Tree.EntityFrameworkCore" Version="0.0.1" />
+    <ProjectReference Include="..\Lazy.Abp.AreaTree.Domain\Lazy.Abp.AreaTree.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
