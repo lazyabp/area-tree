@@ -27,7 +27,7 @@ namespace Lazy.Abp.AreaTree
                 options.Resources
                     .Add<AreaTreeResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("/Localization/AreaTree");
+                    .AddVirtualJson("/Lazy/Abp/AreaTree/Localization/AreaTree");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>
