@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Lazy.Abp.AreaTree.Permissions;
 using Lazy.Abp.AreaTree.Regions.Dtos;
@@ -13,8 +14,8 @@ namespace Lazy.Abp.AreaTree.Regions
         CrudAppService<Region, RegionDto, Guid, RegionListRequestDto, RegionCreateUpdateDto, RegionCreateUpdateDto>,
         IRegionAppService
     {
-        protected override string GetPolicyName { get; set; } = AreaTreePermissions.Region.Default;
-        protected override string GetListPolicyName { get; set; } = AreaTreePermissions.Region.Default;
+        //protected override string GetPolicyName { get; set; } = AreaTreePermissions.Region.Default;
+        //protected override string GetListPolicyName { get; set; } = AreaTreePermissions.Region.Default;
         protected override string CreatePolicyName { get; set; } = AreaTreePermissions.Region.Create;
         protected override string UpdatePolicyName { get; set; } = AreaTreePermissions.Region.Update;
         protected override string DeletePolicyName { get; set; } = AreaTreePermissions.Region.Delete;
@@ -24,12 +25,6 @@ namespace Lazy.Abp.AreaTree.Regions
         public RegionAppService(IRegionRepository repository) : base(repository)
         {
             _repository = repository;
-        }
-        
-        [AllowAnonymous]
-        public override Task<RegionDto> GetAsync(Guid id)
-        {
-            return base.GetAsync(id);
         }
 
         [AllowAnonymous]
@@ -45,6 +40,20 @@ namespace Lazy.Abp.AreaTree.Regions
                 count,
                 ObjectMapper.Map<List<Region>, List<RegionDto>>(list)
             );
+        }
+
+        [AllowAnonymous]
+        public async Task<ListResultDto<RegionListDto>> GetAllAsync()
+        {
+            var list = await _repository.GetListAsync(q => q.IsActive == true);
+            list = list
+                .OrderBy(q => q.DisplayOrder)
+                .ThenBy(q => q.CreationTime)
+                .ToList();
+
+            var result = ObjectMapper.Map<List<Region>, List<RegionListDto>>(list);
+
+            return new ListResultDto<RegionListDto>(result);
         }
     }
 }

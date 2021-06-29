@@ -12,6 +12,7 @@ namespace Lazy.Abp.AreaTree
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
             CreateMap<Region, RegionDto>();
+            CreateMap<Region, RegionListDto>();
             CreateMap<RegionCreateUpdateDto, Region>(MemberList.Source);
         }
     }

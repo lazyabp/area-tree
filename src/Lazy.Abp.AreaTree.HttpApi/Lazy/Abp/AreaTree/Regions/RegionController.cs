@@ -33,6 +33,13 @@ namespace Lazy.Abp.AreaTree.Regions
             return _service.GetListAsync(input);
         }
 
+        [HttpGet]
+        [Route("list/all")]
+        public Task<ListResultDto<RegionListDto>> GetAllAsync()
+        {
+            return _service.GetAllAsync();
+        }
+
         [HttpPost]
         public Task<RegionDto> CreateAsync(RegionCreateUpdateDto input)
         {
