@@ -1,14 +1,9 @@
 <Project>
   <PropertyGroup> 
-    <LangVersion>latest</LangVersion> 
-    <Version>0.0.1</Version>
+    <LangVersion>latest</LangVersion>
+    <AbpVersion>4.3.0</AbpVersion>
     <Authors>LazyAbp</Authors>
     <NoWarn>$(NoWarn);CS1591;CS0436</NoWarn>
-    <PackageProjectUrl>https://github.com/lazyabp/area-tree</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/lazyabp/area-tree</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
