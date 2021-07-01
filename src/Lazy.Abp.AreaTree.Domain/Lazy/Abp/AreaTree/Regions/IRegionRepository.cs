@@ -9,6 +9,12 @@ namespace Lazy.Abp.AreaTree.Regions
 {
     public interface IRegionRepository : ITreeRepository<Region>
     {
+        Task<List<Region>> FindByIdsAsync(
+            IEnumerable<Guid> ids, 
+            bool includeDtails = false, 
+            CancellationToken cancellationToken = default
+        );
+
         Task<int> GetCountAsync(
             Guid? parentId = null,
             int? level = null,

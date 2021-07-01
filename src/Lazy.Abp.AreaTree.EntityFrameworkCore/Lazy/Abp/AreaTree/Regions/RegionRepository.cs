@@ -24,6 +24,18 @@ namespace Lazy.Abp.AreaTree.Regions
                 .Include(x => x.Children);
         }
 
+        public async Task<List<Region>> FindByIdsAsync(
+            IEnumerable<Guid> ids,
+            bool includeDtails = false,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await (await GetDbSetAsync())
+                .IncludeIf(includeDtails, q => q.Children)
+                .Where(q => ids.Contains(q.Id))
+                .ToListAsync(GetCancellationToken(cancellationToken));
+        }
+
         public async Task<int> GetCountAsync(
             Guid? parentId = null,
             int? level = null,

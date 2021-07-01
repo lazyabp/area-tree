@@ -1,7 +1,10 @@
 {
   "culture": "zh-Hans",
   "texts": {
-    "ManageYourProfile": "管理个人资料",
-    "SamplePageMessage": "AreaTree模块的示例页面"
+    "Permission:AreaTree": "地区管理",
+    "Permission:Region": "地区",
+    "Permission:Create": "创建",
+    "Permission:Update": "编辑",
+    "Permission:Delete": "删除"
   }
 }
